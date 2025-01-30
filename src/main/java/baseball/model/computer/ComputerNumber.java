@@ -1,4 +1,4 @@
-package baseball.model;
+package baseball.model.computer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,5 +28,9 @@ public class ComputerNumber {
 
     private static String getRandomNumber() {
         return Integer.toString((int) ((Math.random() * 9) + 1));
+    }
+
+    public String getComputerNumber() {
+        return computerNumber;
     }
 }
