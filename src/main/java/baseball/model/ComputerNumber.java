@@ -13,7 +13,6 @@ public class ComputerNumber {
         this.computerNumber = setComputerNumber();
     }
 
-
     /**
      * 난수 생성
      * @return 컴퓨터 숫자 (난수)
