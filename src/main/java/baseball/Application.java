@@ -1,5 +1,7 @@
 package baseball;
 
+import baseball.controller.BaseballGameController;
+import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Application {
@@ -7,11 +9,14 @@ public class Application {
         // TODO: 프로그램 구현
         OutputView.printStartGame();
         do {
-
+            BaseballGameController controller = new BaseballGameController();
+            controller.start();
         } while (setRetryNumber());
     }
 
     private static boolean setRetryNumber() {
-        return true;
+        String retry = InputView.setRetryNumber();
+        if (retry.equals("1")) return true;
+        return false;
     }
 }

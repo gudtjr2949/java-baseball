@@ -1,7 +1,6 @@
 package baseball.model.computer;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class ComputerNumber {
 
@@ -14,20 +13,28 @@ public class ComputerNumber {
     }
 
     /**
-     * 난수 생성
-     * @return 컴퓨터 숫자 (난수)
+     * 난수 생성 -> 겹치는 숫자가 없어야 함
+     *
      */
     public String setComputerNumber() {
         List<String> randomList = new ArrayList<>();
-        for (int i = 0 ; i < NUMBER_LENGTH ; i++) {
-            randomList.add(getRandomNumber());
+        Set<Integer> uniqueNumbers = new HashSet<>();
+
+        Random random = new Random();
+
+        while (randomList.size() < NUMBER_LENGTH) {
+            int randomNum = random.nextInt(9) + 1;
+            checkRandomInt(randomList, uniqueNumbers, randomNum);
         }
 
         return String.join("", randomList);
     }
 
-    private static String getRandomNumber() {
-        return Integer.toString((int) ((Math.random() * 9) + 1));
+    private static void checkRandomInt(List<String> randomList, Set<Integer> uniqueNumbers, int randomNum) {
+        if (!uniqueNumbers.contains(randomNum)) {
+            uniqueNumbers.add(randomNum);
+            randomList.add(String.valueOf(randomNum));
+        }
     }
 
     public String getComputerNumber() {

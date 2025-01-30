@@ -3,14 +3,19 @@ package baseball.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
+import java.util.Scanner;
+
 public class InputView {
-    public static String setUserNumber() {
-        System.out.println("숫자를 입력해주세요 : ");
-        return Console.readLine();
+
+    private static final Scanner scanner = new Scanner(System.in); // Scanner 객체 생성
+
+    public static String setPlayerNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return scanner.nextLine();
     }
 
     public static String setRetryNumber() {
-        System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
-        return Console.readLine();
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
+        return scanner.nextLine();
     }
 }

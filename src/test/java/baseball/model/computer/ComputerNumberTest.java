@@ -14,10 +14,7 @@ class ComputerNumberTest {
         ComputerNumber computerNumber = new ComputerNumber();
         int numberLength = 3;
 
-        // when
-        computerNumber.setComputerNumber();
-
-        // then
+        // when & then
         assertThat(computerNumber.getComputerNumber().length()).isEqualTo(numberLength);
     }
 
