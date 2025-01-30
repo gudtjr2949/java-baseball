@@ -10,7 +10,6 @@ public class BaseballGameController {
 
     public void start() {
         ComputerNumber computerNumber = new ComputerNumber();
-        System.out.println("생성된 난수 : " + computerNumber.getComputerNumber());
         int ball = 0;
         int strike = 0;
         do {
