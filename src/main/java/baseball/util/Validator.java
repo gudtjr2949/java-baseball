@@ -22,12 +22,7 @@ public class Validator {
         if (!input.matches("-?\\d+")) throw new IllegalArgumentException();
     }
 
-    public static void isLengthThree(String input) {
-        if (input.length() != 3) throw new IllegalArgumentException();
-    }
-
-    public static int isSameInteger(int num1, int num2) {
-        if (num1 == num2) return 1;
-        return 0;
+    public static void isLength(String input, int length) {
+        if (input.length() != length) throw new IllegalArgumentException();
     }
 }

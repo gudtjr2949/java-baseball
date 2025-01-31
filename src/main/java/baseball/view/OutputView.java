@@ -25,9 +25,7 @@ public class OutputView {
         System.out.print("숫자를 입력해주세요 : ");
     }
 
-    public static void printRetryNumber() {
-        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
-    }
+    public static void printRetryNumber() {System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");}
 
     // TODO : 리팩토링 필요
     public static void printCount(int ball, int strike) {

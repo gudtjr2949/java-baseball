@@ -15,7 +15,6 @@ public class BaseballGameController {
 
     public void start() {
         ComputerNumber computerNumber = new ComputerNumber();
-        System.out.println("정답 : " + computerNumber.getComputerNumber());
         int ball = 0;
         int strike = 0;
 

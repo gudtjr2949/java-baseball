@@ -10,7 +10,7 @@ public class ComputerNumber {
 
     /**
      * Random 객체 사용 목적은 오로지 난수 생성임 (아직은..)
-     * 그렇기 때문에 클래스 멤버로 선언함
+     * 그렇기 때문에 클래스 멤버로 선언함 -> 하지만 멀티 스레드 환경에선 동시성 문제 발생할 수 있음!!
      */
     private static final Random random = new Random();
 

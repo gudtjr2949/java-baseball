@@ -1,5 +1,7 @@
 package baseball.model.player;
 
+import baseball.util.GameConstant;
+
 import static baseball.util.Validator.*;
 
 public class PlayerNumber {
@@ -11,7 +13,7 @@ public class PlayerNumber {
     }
 
     private void validatePlayerNumber(String playerNumber) {
-        isLengthThree(playerNumber);
+        isLength(playerNumber, GameConstant.BASEBALL_LENGTH);
         isNotInteger(playerNumber);
         isContainsSameInteger(playerNumber);
     }
