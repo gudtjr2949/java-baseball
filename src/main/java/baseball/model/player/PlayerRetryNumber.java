@@ -13,5 +13,11 @@ public class PlayerRetryNumber {
 
     private void validateRetryNumber(String playerRetryNumber) {
         Validator.isLength(playerRetryNumber, PlayerConstant.RETRY_LENGTH);
+        Validator.isNotInteger(playerRetryNumber);
+        Validator.isNotOneOrTwo(playerRetryNumber);
+    }
+
+    public String getPlayerRetryNumbers() {
+        return playerRetryNumbers;
     }
 }

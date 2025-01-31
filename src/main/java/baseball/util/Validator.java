@@ -22,6 +22,11 @@ public class Validator {
         if (!input.matches("-?\\d+")) throw new IllegalArgumentException();
     }
 
+    public static void isNotOneOrTwo(String input) {
+        if (!(input.equals(PlayerConstant.BASEBALL_GAME_RESTART)
+                || input.equals(PlayerConstant.BASEBALL_GAME_END))) throw new IllegalArgumentException();
+    }
+
     public static void isLength(String input, int length) {
         if (input.length() != length) throw new IllegalArgumentException();
     }

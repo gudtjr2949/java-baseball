@@ -1,9 +1,13 @@
 package baseball;
 
 import baseball.controller.BaseballGameController;
+import baseball.model.player.PlayerNumber;
+import baseball.model.player.PlayerRetryNumber;
 import baseball.util.PlayerConstant;
 import baseball.view.InputView;
 import baseball.view.OutputView;
+
+import static baseball.util.PlayerConstant.*;
 
 public class Application {
 
@@ -17,7 +21,7 @@ public class Application {
     }
 
     private static boolean setRetryNumber() {
-        String retry = InputView.setRetryNumber();
-        return retry.equals(PlayerConstant.BASEBALL_GAME_RESTART);
+        PlayerRetryNumber playerRetryNumber = new PlayerRetryNumber(InputView.setRetryNumber());
+        return playerRetryNumber.getPlayerRetryNumbers().equals(BASEBALL_GAME_RESTART);
     }
 }
