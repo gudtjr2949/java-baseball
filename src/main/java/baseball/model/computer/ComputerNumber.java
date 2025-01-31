@@ -8,32 +8,30 @@ public class ComputerNumber {
 
     private String computerNumber;
 
+    /**
+     * Random 객체 사용 목적은 오로지 난수 생성임 (아직은..)
+     * 그렇기 때문에 클래스 멤버로 선언함
+     */
+    private static final Random random = new Random();
+
 
     public ComputerNumber() {
         this.computerNumber = setComputerNumber();
     }
 
-    /**
-     * 난수 생성 -> 겹치는 숫자가 없어야 함
-     *
-     */
     public String setComputerNumber() {
         List<String> randomList = new ArrayList<>();
-        Set<Integer> uniqueNumbers = new HashSet<>();
 
-        Random random = new Random();
-
-        while (randomList.size() < NUMBER_LENGTH) {
+        while (randomList.size() < BASEBALL_LENGTH) {
             int randomNum = random.nextInt(BASEBALL_END) + BASEBALL_START;
-            checkRandomInt(randomList, uniqueNumbers, randomNum);
+            checkRandomInt(randomList, randomNum);
         }
 
         return String.join("", randomList);
     }
 
-    private static void checkRandomInt(List<String> randomList, Set<Integer> uniqueNumbers, int randomNum) {
-        if (!uniqueNumbers.contains(randomNum)) {
-            uniqueNumbers.add(randomNum);
+    private static void checkRandomInt(List<String> randomList, int randomNum) {
+        if (!randomList.contains(randomNum)) {
             randomList.add(String.valueOf(randomNum));
         }
     }

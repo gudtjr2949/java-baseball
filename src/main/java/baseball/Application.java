@@ -5,8 +5,9 @@ import baseball.view.InputView;
 import baseball.view.OutputView;
 
 public class Application {
+
+    // TODO: Main 에서 너무 많은 역할 담당
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         OutputView.printStartGame();
         do {
             BaseballGameController controller = new BaseballGameController();

@@ -21,6 +21,15 @@ public class OutputView {
         System.out.println("낫싱");
     }
 
+    public static void printPlayerNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+    }
+
+    public static void printRetryNumber() {
+        System.out.print("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. ");
+    }
+
+    // TODO : 리팩토링 필요
     public static void printCount(int ball, int strike) {
         if (ball == 0 && strike == 0) {
             printNotting();

@@ -5,12 +5,17 @@ import baseball.model.player.PlayerNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
-import static baseball.util.GameConstant.NUMBER_LENGTH;
+import static baseball.util.GameConstant.BASEBALL_LENGTH;
 
+/**
+ * TODO : 리팩토링 필요. Controller 에서 너무 많은 역할 수행. 메서드 명도 너무 헷갈림
+ *
+ */
 public class BaseballGameController {
 
     public void start() {
         ComputerNumber computerNumber = new ComputerNumber();
+        System.out.println("정답 : " + computerNumber.getComputerNumber());
         int ball = 0;
         int strike = 0;
 
@@ -22,47 +27,45 @@ public class BaseballGameController {
     }
 
     private int calculateStrike(ComputerNumber computerNumber, PlayerNumber playerNumber) {
-        return setStrike(playerNumber.getPlayerNumbers(), computerNumber.getComputerNumber());
-    }
+        int strike = 0;
 
-    private int calculateBall(ComputerNumber computerNumber, PlayerNumber playerNumber) {
-        return setBall(playerNumber.getPlayerNumbers(), computerNumber.getComputerNumber());
-    }
-
-    private boolean checkEndOrContinue(int ball, int strike) {
-        OutputView.printCount(ball, strike);
-
-        if (strike == NUMBER_LENGTH) {
-            OutputView.printGameEnd();
-            return false;
+        for (int i = 0; i < BASEBALL_LENGTH; i++) {
+            strike += getStrike(computerNumber, playerNumber, i);
         }
 
-        return true;
+        return strike;
     }
 
-    private int setBall(String player, String computer) {
+
+    private int calculateBall(ComputerNumber computerNumber, PlayerNumber playerNumber) {
         int ball = 0;
 
-        for (int i = 0 ; i < NUMBER_LENGTH ; i++) {
-            ball += getBall(player, computer, i);
+        for (int i = 0; i < BASEBALL_LENGTH; i++) {
+            ball += getBall(playerNumber.getPlayerNumbers(), computerNumber.getComputerNumber(), i);
         }
 
         return ball;
     }
+
+    private static int getStrike(ComputerNumber computerNumber, PlayerNumber playerNumber, int idx) {
+        if (computerNumber.getComputerNumber().charAt(idx) == playerNumber.getPlayerNumbers().charAt(idx)) return 1;
+        return 0;
+    }
+
 
     private static int getBall(String player, String computer, int i) {
         if (computer.contains(Character.toString(player.charAt(i)))) return 1;
         return 0;
     }
 
+    private boolean checkEndOrContinue(int ball, int strike) {
+        OutputView.printCount(ball, strike);
 
-    private int setStrike(String player, String computer) {
-        int strike = 0;
+        if (strike == BASEBALL_LENGTH) {
+            OutputView.printGameEnd();
+            return false;
+        }
 
-        if (player.charAt(0) == computer.charAt(0)) strike++;
-        if (player.charAt(1) == computer.charAt(1)) strike++;
-        if (player.charAt(2) == computer.charAt(2)) strike++;
-
-        return strike;
+        return true;
     }
 }
