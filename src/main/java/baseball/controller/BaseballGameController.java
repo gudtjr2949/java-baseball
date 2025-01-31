@@ -5,18 +5,28 @@ import baseball.model.player.PlayerNumber;
 import baseball.view.InputView;
 import baseball.view.OutputView;
 
+import static baseball.util.GameConstant.NUMBER_LENGTH;
+
 public class BaseballGameController {
-    private static final int NUMBER_LENGTH = 3;
 
     public void start() {
         ComputerNumber computerNumber = new ComputerNumber();
         int ball = 0;
         int strike = 0;
+
         do {
             PlayerNumber playerNumber = new PlayerNumber(InputView.setPlayerNumber());
-            strike = setStrike(playerNumber.getPlayerNumbers(), computerNumber.getComputerNumber());
-            ball = setBall(playerNumber.getPlayerNumbers(), computerNumber.getComputerNumber()) - strike;
+            strike = calculateStrike(computerNumber, playerNumber);
+            ball = calculateBall(computerNumber, playerNumber) - strike;
         } while (checkEndOrContinue(ball, strike));
+    }
+
+    private int calculateStrike(ComputerNumber computerNumber, PlayerNumber playerNumber) {
+        return setStrike(playerNumber.getPlayerNumbers(), computerNumber.getComputerNumber());
+    }
+
+    private int calculateBall(ComputerNumber computerNumber, PlayerNumber playerNumber) {
+        return setBall(playerNumber.getPlayerNumbers(), computerNumber.getComputerNumber());
     }
 
     private boolean checkEndOrContinue(int ball, int strike) {

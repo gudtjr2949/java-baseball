@@ -2,10 +2,11 @@ package baseball.model.computer;
 
 import java.util.*;
 
+import static baseball.util.GameConstant.*;
+
 public class ComputerNumber {
 
     private String computerNumber;
-    private final static int NUMBER_LENGTH = 3;
 
 
     public ComputerNumber() {
@@ -23,7 +24,7 @@ public class ComputerNumber {
         Random random = new Random();
 
         while (randomList.size() < NUMBER_LENGTH) {
-            int randomNum = random.nextInt(9) + 1;
+            int randomNum = random.nextInt(BASEBALL_END) + BASEBALL_START;
             checkRandomInt(randomList, uniqueNumbers, randomNum);
         }
 
