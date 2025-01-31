@@ -1,7 +1,6 @@
 package baseball.model.player;
 
-import java.util.HashSet;
-import java.util.Set;
+import baseball.util.Validator;
 
 public class PlayerNumber {
     private String playerNumbers;
@@ -13,27 +12,9 @@ public class PlayerNumber {
     }
 
     private void validatePlayerNumber(String playerNumber) {
-        isLengthThree(playerNumber);
-        isNotInteger(playerNumber);
-        isContainsSameInt(playerNumber);
-    }
-
-    private void isContainsSameInt(String inputNumber) {
-        Set<Character> set = new HashSet<>();
-
-        for (char c : inputNumber.toCharArray()) {
-            set.add(c);
-        }
-
-        if (set.size() != 3) throw new IllegalArgumentException();
-    }
-
-    private void isNotInteger(String inputNumber) {
-        if (!inputNumber.matches("-?\\d+")) throw new IllegalArgumentException();
-    }
-
-    private void isLengthThree(String inputNumber) {
-        if (inputNumber.length() != 3) throw new IllegalArgumentException();
+        Validator.isLengthThree(playerNumber);
+        Validator.isNotInteger(playerNumber);
+        Validator.isContainsSameInt(playerNumber);
     }
 
     public String getPlayerNumbers() {
